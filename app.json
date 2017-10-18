@@ -1,0 +1,53 @@
+{
+  "name": "event-sourced-report",
+  "description": "A Kafka consumer analyses cart activity to produce an abandoned product report",
+  "keywords": [
+    "sinatra",
+    "ruby",
+    "kafka"
+  ],
+  "website": "https://github.com/ryantownsend/event-sourced-report",
+  "repository": "https://github.com/ryantownsend/event-sourced-report",
+  "success_url": "/",
+  "stack": "heroku-16",
+  "image": "heroku/ruby",
+  "env": {
+    "WEB_CONCURRENCY": {
+      "description": "The number of Puma web processes.",
+      "value": "2"
+    },
+    "WEB_THREADS": {
+      "description": "The number of Puma web threads.",
+      "value": "5"
+    },
+    "RACK_ENV": {
+      "description": "The Rack environment to use.",
+      "value": "production"
+    }
+  },
+  "formation": [
+    {
+      "process": "web",
+      "quantity": 1,
+      "size": "hobby"
+    },
+    {
+      "process": "orderconsumer",
+      "quantity": 0,
+      "size": "hobby"
+    },
+    {
+      "process": "cartconsumer",
+      "quantity": 0,
+      "size": "hobby"
+    }
+  ],
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.6"
+      }
+    }
+  ]
+}
