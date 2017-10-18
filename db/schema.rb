@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016110801) do
+ActiveRecord::Schema.define(version: 20171016110802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "last_cart_removals", primary_key: "cart_id", id: :uuid, default: nil, force: :cascade do |t|
-    t.uuid "product_id", null: false
+    t.string "product_id", null: false
     t.datetime "removed_at", null: false
     t.datetime "order_placed_at"
   end
