@@ -8,6 +8,8 @@ class CartConsumer < Racecar::Consumer
   def process(message)
     message_value = Oj.load(message.value)
 
+    $stdout.puts "Received message: #{message_value}"
+
     # skip events that aren't removing items from carts
     return unless message_value['type'] == 'removed_item_from_cart'
 
