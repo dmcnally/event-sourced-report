@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Cart ID</th>
-      <th>Item ID</th>
+      <th>Product ID</th>
       <th>Time Removed Before Order</th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
     <% last_cart_removals.each do |last_cart_removal| %>
       <tr>
         <td><%= last_cart_removal.cart_id %></td>
-        <td><%= last_cart_removal.item_id %></td>
+        <td><%= last_cart_removal.product_id %></td>
         <td><%= (last_cart_removal.order_placed_at - last_cart_removal.removed_at).to_i %> seconds</td>
       </tr>
     <% end %>

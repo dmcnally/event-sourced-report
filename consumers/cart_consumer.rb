@@ -13,9 +13,9 @@ class CartConsumer < Racecar::Consumer
 
     # insert or update the latest removal
     LastCartRemoval.connection.execute <<-SQL
-      insert into last_cart_removals (cart_id, item_id, removed_at)
-      values ('#{message_value.fetch('cart_id')}', '#{message_value.fetch('item_id')}', '#{message_value.fetch('timestamp')}')
-      on conflict (cart_id) do update set item_id = EXCLUDED.item_id, removed_at = EXCLUDED.removed_at
+      insert into last_cart_removals (cart_id, product_id, removed_at)
+      values ('#{message_value.fetch('cart_id')}', '#{message_value.fetch('product_id')}', '#{message_value.fetch('timestamp')}')
+      on conflict (cart_id) do update set product_id = EXCLUDED.product_id, removed_at = EXCLUDED.removed_at
     SQL
   end
 end
