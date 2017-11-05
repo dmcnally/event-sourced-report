@@ -1,21 +1,43 @@
-<h1>Last Items Removed Prior to Checkout</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,user-scalable=yes" />
 
-<table>
-  <thead>
-    <tr>
-      <th>Cart ID</th>
-      <th>Product ID</th>
-      <th>Time Removed Before Order</th>
-    </tr>
-  </thead>
+    <title>Event-driven Cart</title>
 
-  <tbody>
-    <% last_cart_removals.each do |last_cart_removal| %>
-      <tr>
-        <td><%= last_cart_removal.cart_id %></td>
-        <td><%= last_cart_removal.product_id %></td>
-        <td><%= (last_cart_removal.order_placed_at - last_cart_removal.removed_at).to_i %> seconds</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <link rel='stylesheet' href='/styles.css' />
+  </head>
+
+  <body>
+    <h1>Last Items Removed Prior to Checkout</h1>
+
+    <table class='c-removals-table'>
+      <thead>
+        <tr class='c-removals-table__row'>
+          <th class='c-removals-table__cell c-removals-table__cell--heading'>Cart</th>
+          <th class='c-removals-table__cell c-removals-table__cell--heading'>Product</th>
+          <th class='c-removals-table__cell c-removals-table__cell--heading'>Time Removed Before Order</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% last_cart_removals.each do |last_cart_removal| %>
+          <tr class='c-removals-table__row'>
+            <td class='c-removals-table__cell c-removals-table__cell--body c-removals-table__cell--heading'>
+              <%= last_cart_removal.cart_id %>
+            </td>
+            <td class='c-removals-table__cell c-removals-table__cell--body'>
+              <%= last_cart_removal.product_title %>
+            </td>
+            <td class='c-removals-table__cell c-removals-table__cell--body'>
+              <%= (last_cart_removal.order_placed_at - last_cart_removal.removed_at).to_i %> seconds
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </body>
+</html>
