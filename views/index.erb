@@ -16,22 +16,22 @@
     <table class='c-removals-table'>
       <thead>
         <tr class='c-removals-table__row'>
-          <th class='c-removals-table__cell c-removals-table__cell--heading'>Cart</th>
-          <th class='c-removals-table__cell c-removals-table__cell--heading'>Product</th>
-          <th class='c-removals-table__cell c-removals-table__cell--heading'>Time Removed Before Order</th>
+          <th class='c-removals-table__cell c-removals-table__cell--heading u-text-left'>Cart</th>
+          <th class='c-removals-table__cell c-removals-table__cell--heading u-text-left'>Product</th>
+          <th class='c-removals-table__cell c-removals-table__cell--heading u-text-right'>Time Removed Before Order</th>
         </tr>
       </thead>
 
       <tbody>
         <% last_cart_removals.each do |last_cart_removal| %>
           <tr class='c-removals-table__row'>
-            <td class='c-removals-table__cell c-removals-table__cell--body c-removals-table__cell--heading'>
+            <td class='c-removals-table__cell c-removals-table__cell--body c-removals-table__cell--heading u-text-left'>
               <%= last_cart_removal.cart_id %>
             </td>
-            <td class='c-removals-table__cell c-removals-table__cell--body'>
+            <td class='c-removals-table__cell c-removals-table__cell--body u-text-left'>
               <%= last_cart_removal.product_title %>
             </td>
-            <td class='c-removals-table__cell c-removals-table__cell--body'>
+            <td class='c-removals-table__cell c-removals-table__cell--body u-text-right'>
               <%= (last_cart_removal.order_placed_at - last_cart_removal.removed_at).to_i %> seconds
             </td>
           </tr>
