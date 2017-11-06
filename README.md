@@ -4,5 +4,6 @@
 
 1. Deploy to Heroku
 2. Attach Kafka
-3. Create consumer groups `heroku kafka:consumer-groups:create report-order-consumer --app ...`, `heroku kafka:consumer-groups:create report-cart-consumer --app ...`
-4. Boot consumers
+3. Add the Postgres addon
+4. Create consumer groups `heroku kafka:consumer-groups:create report-order-consumer --app YOUR_APP_NAME`, `heroku kafka:consumer-groups:create report-cart-consumer --app YOUR_APP_NAME`
+5. Boot consumers
